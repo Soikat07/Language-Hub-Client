@@ -81,7 +81,7 @@ const NavBar = () => {
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           <h3 className="font-bold lg:text-4xl">
-            <span className="text-slate-700">FashionLab</span>
+            <span className="text-slate-700">Language Hub</span>
           </h3>
         </Link>
       </div>

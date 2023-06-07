@@ -5,6 +5,7 @@ import { AuthContext } from "../../providers/Authprovider";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye,FaEyeSlash } from 'react-icons/fa';
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -98,6 +99,7 @@ const Login = () => {
                 New in here? <Link to="/registration">Sign Up</Link>
               </small>
             </p>
+            <SocialLogin/>
           </form>
         </div>
       </div>
