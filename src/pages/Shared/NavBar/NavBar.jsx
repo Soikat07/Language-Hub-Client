@@ -4,7 +4,12 @@ import { AuthContext } from "../../../providers/Authprovider";
 
 
 const NavBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch(error => console.error(error));
+  };
 
   const navItems = (
     <>
@@ -95,6 +100,7 @@ const NavBar = () => {
               alt=""
             />
             <button
+              onClick={handleLogout}
               className="font-bold  text-slate-600 hover:bg-slate-200 px-3 py-2 rounded-lg"
             >
               Logout

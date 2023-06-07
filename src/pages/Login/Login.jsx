@@ -2,11 +2,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import 'animate.css';
 import { AuthContext } from "../../providers/Authprovider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye,FaEyeSlash } from 'react-icons/fa';
 
 
 const Login = () => {
+  const [show, setShow] = useState(false);
   const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,6 +43,10 @@ const Login = () => {
        console.error(error);
      });
   };
+  //handle show password
+  const handlePasswordShow = () => {
+    setShow(!show);
+  }
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -70,22 +76,22 @@ const Login = () => {
                 <span className="text-red-600">Email is required</span>
               )}
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
-                <span className="label-text"> Password</span>
+                <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? 'text' : 'password'}
+                {...register('password', { required: true })}
                 placeholder="Password"
                 className="input input-bordered"
               />
+              <div className="absolute right-4 bottom-4">
+                <span onClick={handlePasswordShow}>{show ?<FaEyeSlash/>:<FaEye/>}</span>
+              </div>
             </div>
             <div className="form-control mt-6">
-              <input
-                className="btn btn-primary"
-                type="submit"
-                value="Login"
-              />
+              <input className="btn btn-primary" type="submit" value="Login" />
             </div>
             <p>
               <small>

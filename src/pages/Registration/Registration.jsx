@@ -22,6 +22,8 @@ const Registration = () => {
       .then(result => {
       const loggedUser = result.user;
         console.log(loggedUser);
+        reset();
+        navigate('/');
         Swal.fire({
           title: 'User created Successful',
           showClass: {
@@ -37,8 +39,6 @@ const Registration = () => {
         .catch(error => console.error(error))
       })
       .catch(error => console.log(error));
-      reset();
-      navigate('/');
   };
 
   return (
