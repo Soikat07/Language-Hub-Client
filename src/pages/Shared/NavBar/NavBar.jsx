@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../providers/Authprovider";
 
 
 const NavBar = () => {
+  const { user } = useContext(AuthContext);
 
   const navItems = (
     <>
@@ -29,7 +32,7 @@ const NavBar = () => {
           Classes
         </NavLink>
       </li>
-      {/* {user && (
+      {user && (
         <>
           <li>
             <NavLink
@@ -40,7 +43,7 @@ const NavBar = () => {
             </NavLink>
           </li>
         </>
-      )} */}
+      )}
     </>
   );
 
@@ -82,7 +85,7 @@ const NavBar = () => {
           {navItems}
         </ul>
       </div>
-      {/* <div className="sm:relative navbar-end">
+      <div className="sm:relative navbar-end">
         {user ? (
           <span className="lg:flex lg:space-x-2">
             <img
@@ -104,7 +107,7 @@ const NavBar = () => {
             </button>
           </Link>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
