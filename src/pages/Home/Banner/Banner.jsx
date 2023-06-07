@@ -10,20 +10,20 @@ const Banner = () => {
   return (
     <Carousel>
       <div className="relative">
-        <img src={slider1} />
-        <div className="absolute top-60 right-1/3 w-4/12">
-          <p className="text-white text-4xl">
-            Putting Children First. Preparing Children For Success In Life
-          </p>
-          <div className="mt-5 space-x-5">
-            <button className="btn text-white uppercase bg-red-500 rounded-3xl border-none">
-              Sign up now
-            </button>
-            <button className="text-white btn btn-outline uppercase rounded-3xl border-2">
-              Learn More
-            </button>
+          <img src={slider1} />
+          <div className="absolute top-60 right-1/3 w-4/12">
+            <p className="text-white text-4xl">
+              Putting Children First. Preparing Children For Success In Life
+            </p>
+            <div className="mt-5 space-x-5">
+              <button className="btn text-white uppercase bg-red-500 rounded-3xl border-none">
+                Sign up now
+              </button>
+              <button className="text-white btn btn-outline uppercase rounded-3xl border-2">
+                Learn More
+              </button>
+            </div>
           </div>
-        </div>
       </div>
       <div>
         <img src={slider2} />
