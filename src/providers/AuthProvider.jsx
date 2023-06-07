@@ -11,13 +11,11 @@ import {
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
-
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
-
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -64,13 +62,11 @@ const AuthProvider = ({children}) => {
     logIn,
     logOut,
     googleSignIn,
-    updateUserProfile
+    updateUserProfile,
   };
-  
+
   return (
-    <AuthContext.Provider value={authInfo}>
-    {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

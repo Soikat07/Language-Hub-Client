@@ -1,9 +1,38 @@
+import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../../providers/Authprovider";
 
 
 const SocialLogin = () => {
+
+  const { googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+    .catch(error=>console.error(error))
+  }
+
   return (
-    <div>
-      
+    <div className="text-center">
+      <div className="divider">Or</div>
+      <div>
+        <p>Login with Google</p>
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-circle btn-outline bg-blue-600 border-none mt-2"
+        >
+          <FaGoogle className="text-white" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/Authprovider';
 import Swal from 'sweetalert2';
 import 'animate.css';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Registration = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -18,27 +19,37 @@ const Registration = () => {
 
   const onSubmit = data => {
     console.log(data);
-    createUser(data.email, data.password)
-      .then(result => {
-      const loggedUser = result.user;
-        console.log(loggedUser);
-        reset();
-        navigate('/');
-        Swal.fire({
-          title: 'User created Successful',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown',
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp',
-          },
-        });
-        
-        updateUserProfile(data.name, data.photoURL)
-          .then(() => {})
-        .catch(error => console.error(error))
-      })
-      .catch(error => console.log(error));
+    if (data.password === data.confirmPassword) {
+      createUser(data.email, data.password)
+        .then(result => {
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          reset();
+          navigate('/');
+          Swal.fire({
+            title: 'User created Successful',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown',
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp',
+            },
+          });
+
+          updateUserProfile(data.name, data.photoURL)
+            .then(() => {})
+            .catch(error => console.error(error));
+        })
+        .catch(error => console.log(error));
+    }
+    else {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'The password did not match!',
+      });
+    }
+
   };
 
   return (
@@ -137,6 +148,7 @@ const Registration = () => {
               </label>
               <input
                 type="password"
+                {...register('confirmPassword', { required: true })}
                 placeholder="Confirm your password"
                 className="input input-bordered"
               />
@@ -153,6 +165,7 @@ const Registration = () => {
                 Already have an account? <Link to="/login">Login</Link>
               </small>
             </p>
+            <SocialLogin />
           </form>
         </div>
       </div>
