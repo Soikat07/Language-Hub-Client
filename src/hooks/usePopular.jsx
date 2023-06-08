@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 
 
 const usePopular = () => {
-  const [classes, setClasses] = useState([]);
+  const {
+    data: classes = [],
+    isLoading: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ['classes'],
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/popularclasses');
+      return res.json();
+    },
+  });
 
-  useEffect(() => {
-    fetch('http://localhost:5000/popularclasses')
-      .then(res => res.json())
-      .then(data => {
-        setClasses(data);
-      });
-  }, []);
-
-  return [classes];
+  return [classes,loading,refetch];
 };
 
 export default usePopular;

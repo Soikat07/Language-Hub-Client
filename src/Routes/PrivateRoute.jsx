@@ -5,12 +5,10 @@ import { AuthContext } from "../providers/Authprovider";
 
 
 const PrivateRoute = ({children}) => {
-  const { user, loader } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  if (user) {
-    return children;
-  }
-  if (loader) {
+  
+  if (loading) {
     return (
       <RotatingLines
         strokeColor="grey"
@@ -18,8 +16,11 @@ const PrivateRoute = ({children}) => {
         animationDuration="0.75"
         width="96"
         visible={true}
-      />
+      ></RotatingLines>
     );
+  }   
+  if (user) {
+    return children;
   }
   return <Navigate to="/login" state={{ form: location }} replace />;
 };
