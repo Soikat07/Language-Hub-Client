@@ -7,7 +7,7 @@ const ExtraSection = () => {
     <section className="feature-section my-20 bg-fixed text-center">
       <div className="p-10 text-white bg-black bg-opacity-25">
         <div className='bg-black bg-opacity-30 p-4 mb-4 w-4/6 mx-auto'>
-          <h3 className="text-4xl">Language School In Number</h3>
+          <h3 className="text-4xl">Language Hub In Number</h3>
         </div>
         <div className="grid grid-cols-5 space-x-3 w-4/6 mx-auto">
           <div className="bg-black  bg-opacity-30 p-10 mb-5 font-bold">
