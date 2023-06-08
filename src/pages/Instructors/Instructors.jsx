@@ -3,7 +3,7 @@ import useClasses from "../../hooks/useClasses";
 
 const Instructors = () => {
   const [classes, ,] = useClasses();
-  console.log(classes);
+  
   return (
     <div className="overflow-x-auto">
       <table className="table">
