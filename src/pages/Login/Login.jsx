@@ -88,7 +88,7 @@ const Login = () => {
                 className="input input-bordered"
               />
               <div className="absolute right-4 bottom-4">
-                <span onClick={handlePasswordShow}>{show ?<FaEyeSlash/>:<FaEye/>}</span>
+                <span onClick={handlePasswordShow}>{show ?<FaEyeSlash title="Hide password"/>:<FaEye title="Show password"/>}</span>
               </div>
             </div>
             <div className="form-control mt-6">

@@ -8,6 +8,7 @@ const SelectedClass = () => {
   const [selectClasses, refetch] = useSelected();
   // console.log(selectClasses);
   const total = selectClasses.reduce((sum, item) => item.price + sum, 0);
+  const totalPrice = total.toFixed(2);
 
   const handleDelete = id => {
     Swal.fire({
@@ -38,7 +39,7 @@ const SelectedClass = () => {
     <div className="w-full ms-10">
       <div className="flex justify-evenly mb-5 text-2xl font-bold">
         <h3>Selected Class :{selectClasses.length}</h3>
-        <h3>Total Price: ${total}</h3>
+        <h3>Total Price: ${totalPrice}</h3>
         <Link to='/dashboard/payment'>
           <button className="btn btn-warning px-8">Pay</button>
         </Link>
