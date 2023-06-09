@@ -26,12 +26,12 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/classes">
+                <NavLink to="/dashboard/manageClasses">
                   <FaWallet></FaWallet> Manage Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/users">
+                <NavLink to="/dashboard/manageUsers">
                   <FaBook></FaBook> Manage Users
                 </NavLink>
               </li>
