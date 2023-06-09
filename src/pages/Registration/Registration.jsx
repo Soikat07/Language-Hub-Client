@@ -24,20 +24,33 @@ const Registration = () => {
         .then(result => {
           const loggedUser = result.user;
           console.log(loggedUser);
-          reset();
-          navigate('/');
-          Swal.fire({
-            title: 'User created Successful',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown',
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp',
-            },
-          });
-
           updateUserProfile(data.name, data.photoURL)
-            .then(() => {})
+            .then(() => {
+              const savedUser = { name: data.name, email: data.email };
+              fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                },
+                body: JSON.stringify(savedUser),
+              })
+                .then(res => res.json())
+                .then(data => {
+                  if (data.insertedId) {
+                    reset();
+                    Swal.fire({
+                      title: 'User created Successful',
+                      showClass: {
+                        popup: 'animate__animated animate__fadeInDown',
+                      },
+                      hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp',
+                      },
+                    });
+                    navigate('/');
+                  }
+                });
+            })
             .catch(error => console.error(error));
         })
         .catch(error => console.log(error));
