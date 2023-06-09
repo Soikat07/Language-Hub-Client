@@ -6,3 +6,10 @@
 .active{
   @apply transition-colors duration-200 font-medium tracking-wide text-white bg-orange-500
 }
+
+.drawer-side a.active {
+    color: gold;
+  }
+  .drawer-side a {
+    background-color: transparent;
+  }

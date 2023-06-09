@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 const usePopular = () => {
   const {
     data: classes = [],
-    isLoading: loading,
     refetch,
   } = useQuery({
     queryKey: ['classes'],
@@ -15,7 +14,7 @@ const usePopular = () => {
     },
   });
 
-  return [classes,loading,refetch];
+  return [classes,refetch];
 };
 
 export default usePopular;

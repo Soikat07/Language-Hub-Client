@@ -19,7 +19,7 @@ const Classes = () => {
         course_name: item.course_name,
         price: item.price,
         available_seats: item.available_seats,
-        enrolled_students: item.enrolled_students,
+        image:item.image,
         email: user.email,
       };
       console.log(selectClass);

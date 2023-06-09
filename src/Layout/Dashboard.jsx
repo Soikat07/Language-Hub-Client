@@ -20,8 +20,8 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-          <h2 className="text-3xl mb-10">Language Hub</h2>
+        <ul className="menu p-4 w-60 h-full bg-cyan-500 text-white">
+          <h2 className="text-3xl mb-10 text-gray-700 font-semibold">Language Hub</h2>
           {/* Sidebar content here */}
           {isAdmin ? (
             <>
@@ -39,12 +39,12 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <NavLink to="/dashboard/reservations">
+                <NavLink to="/dashboard/selectClasses">
                   <FaCalendarAlt></FaCalendarAlt> My Selected Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservations">
+                <NavLink to="/dashboard/enrollClasses">
                   <FaCalendarAlt></FaCalendarAlt> My Enrolled Classes
                 </NavLink>
               </li>
