@@ -1,6 +1,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useSelected from "../../../hooks/useSelected";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const SelectedClass = () => {
@@ -38,7 +39,9 @@ const SelectedClass = () => {
       <div className="flex justify-evenly mb-5 text-2xl font-bold">
         <h3>Selected Class :{selectClasses.length}</h3>
         <h3>Total Price: ${total}</h3>
-        <button className="btn btn-warning px-8">Pay</button>
+        <Link to='/dashboard/payment'>
+          <button className="btn btn-warning px-8">Pay</button>
+        </Link>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table">
@@ -58,15 +61,19 @@ const SelectedClass = () => {
                 <td>{index + 1}</td>
                 <td className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
-                    <img
-                      src={item.image}
-                      alt="Avatar Tailwind CSS Component"
-                    />
+                    <img src={item.image} alt="Avatar Tailwind CSS Component" />
                   </div>
                 </td>
                 <td>{item.course_name}</td>
                 <td>${item.price}</td>
-                <td><button onClick={()=>handleDelete(item._id)} className="btn btn-ghost btn-md bg-red-600 text-white"><FaTrashAlt/></button></td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="btn btn-ghost btn-md bg-red-600 text-white"
+                  >
+                    <FaTrashAlt />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

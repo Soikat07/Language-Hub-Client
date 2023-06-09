@@ -50,11 +50,6 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/">
-                  <FaCalendarAlt></FaCalendarAlt> Payment
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/">
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>
