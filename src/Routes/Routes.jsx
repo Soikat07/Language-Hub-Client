@@ -14,6 +14,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import ManageUsers from "../pages/Dashboard/ManageUser/ManageUsers";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'instructors',
-        element:<Instructors/>
+        element: <Instructors />,
       },
       {
         path: 'classes',
@@ -45,33 +46,42 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: 'selectClasses',
-        element:<SelectedClass/>
+        element: <SelectedClass />,
       },
       {
         path: 'enrollClasses',
-        element:<EnrolledClass/>
+        element: <EnrolledClass />,
       },
       {
         path: 'payment',
-        element:<Payment/>
+        element: <Payment />,
       },
       {
         path: 'manageUsers',
-        element: <ManageUsers />
+        element: <ManageUsers />,
       },
       {
         path: 'addClass',
-        element:<AddClass/>
+        element: <AddClass />,
       },
       {
         path: 'myClasses',
-        element:<MyClasses/>
-      }
-    ]
+        element: <MyClasses />,
+      },
+      {
+        path: 'updateClass/:id',
+        element: <UpdateClass />,
+        loader: ({ params }) => fetch(`http://localhost:5000/myClasses/${params.id}`),
+      },
+    ],
   },
 ]);
 export default router;

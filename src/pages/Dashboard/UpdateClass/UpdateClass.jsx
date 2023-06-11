@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddClass = () => {
-  const [axiosSecure] = useAxiosSecure();
+
+const UpdateClass = () => {
   const { user } = useContext(AuthContext);
+  const loadedData = useLoaderData();
+  // console.log(loadedData);
+  const { _id,course_name,price,available_seats,} = loadedData;
 
-  const handleAddToy = event => {
+  const handleUpdateToy = event => {
     event.preventDefault();
     const form = event.target;
     const className = form.className.value;
@@ -32,35 +35,37 @@ const AddClass = () => {
           const classData = {
             instructor_name: user.displayName,
             instructor_email: user.email,
-            instructor_image: user.photoURL,
             course_name: className,
             image: hostImg,
             price: price,
-            status: 'Pending',
-            enrolled_students:0,
             available_seats: quantity,
           };
-          axiosSecure.post('/classes', classData).then(data => {
-            console.log('after post', data.data);
-            if (data.data.insertedId) {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your class has been added',
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-            form.reset()
-          });
+          fetch(`http://localhost:5000/myClasses/${_id}`, {
+            method: 'PUT',
+            headers: {
+              'content-type': 'application/json',
+            },
+            body: JSON.stringify(classData),
+          })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              if (data.modifiedCount > 0) {
+                Swal.fire({
+                  title: 'Success!',
+                  text: 'Class Updated Successfully',
+                  icon: 'success',
+                  confirmButtonText: 'Cool',
+                });
+              }
+            });
         }
       });
-    };
-    
+  };
   return (
     <div>
       <form
-        onSubmit={handleAddToy}
+        onSubmit={handleUpdateToy}
         className="p-10 lg:p-20 border my-5 bg-zinc-100"
       >
         <h2 className="text-xl lg:text-2xl my-5">
@@ -93,20 +98,21 @@ const AddClass = () => {
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="label-text">Class Image</span>
+              <span className="label-text">Class Image*</span>
             </label>
             <input
+              required
               name="classImage"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
-              required
             />
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Class Name</span>
+              <span className="label-text">Class Name*</span>
             </label>
             <input
+              defaultValue={course_name}
               type="text"
               name="className"
               placeholder="Class name"
@@ -117,9 +123,10 @@ const AddClass = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Price</span>
+              <span className="label-text">Price*</span>
             </label>
             <input
+              defaultValue={price}
               type="number"
               placeholder="$Price"
               name="price"
@@ -129,9 +136,10 @@ const AddClass = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Available Seats</span>
+              <span className="label-text">Available Seats*</span>
             </label>
             <input
+              defaultValue={available_seats}
               type="number"
               placeholder="Number"
               name="quantity"
@@ -145,7 +153,7 @@ const AddClass = () => {
           <input
             className="btn btn-block bg-cyan-600 border-none text-white"
             type="submit"
-            value="Add Class"
+            value="Update Class"
           />
         </div>
       </form>
@@ -153,4 +161,4 @@ const AddClass = () => {
   );
 };
 
-export default AddClass;
+export default UpdateClass;
