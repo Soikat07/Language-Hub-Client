@@ -11,7 +11,7 @@ const PopularInstructor = () => {
         <p>Here are our popular instructors</p>
       </div>
       <div className="grid grid-cols-3 space-y-5">
-        {classes.map( item => (
+        {classes.slice(0,6).map( item => (
           <InstructorCart item={item} key={item._id} />
         ))}
       </div>

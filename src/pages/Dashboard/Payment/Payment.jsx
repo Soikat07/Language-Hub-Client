@@ -4,6 +4,7 @@ import CheckoutForm from "./CheckoutForm";
 import useSelected from "../../../hooks/useSelected";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
+
 const Payment = () => {
   const [selectClasses] = useSelected();
   const total = selectClasses.reduce((sum, item) => item.price + sum, 0);
