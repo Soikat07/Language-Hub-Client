@@ -5,10 +5,10 @@ const Instructors = () => {
   const [classes] = useClasses();
   
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto my-10 mb-20">
       <table className="table">
         {/* head */}
-        <thead className="bg-orange-400 text-black text-base">
+        <thead className="bg-cyan-500 text-white text-base">
           <tr>
             <th>Serial</th>
             <th>Image</th>

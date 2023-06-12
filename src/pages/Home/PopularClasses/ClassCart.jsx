@@ -10,7 +10,7 @@ const ClassCart = ({ item }) => {
   } = item;
   
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card lg:px-0 lg:w-96 shadow-md bg-base-200">
       <figure>
         <img
           src={image}

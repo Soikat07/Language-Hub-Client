@@ -30,7 +30,7 @@ const NavBar = () => {
     <>
       <li>
         <NavLink
-          className={({ isActive }) => (isActive ? 'active' : '')}
+          className={({ isActive }) => (isActive ? 'active' : 'default')}
           to="/"
         >
           Home
@@ -38,7 +38,7 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink
-          className={({ isActive }) => (isActive ? 'active' : '')}
+          className={({ isActive }) => (isActive ? 'active' : 'default')}
           to="/instructors"
         >
           Instructors
@@ -46,7 +46,7 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink
-          className={({ isActive }) => (isActive ? 'active' : '')}
+          className={({ isActive }) => (isActive ? 'active' : 'default')}
           to="/classes"
         >
           Classes
@@ -56,7 +56,7 @@ const NavBar = () => {
         <>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? 'active' : '')}
+              className={({ isActive }) => (isActive ? 'active' : 'default')}
               to="/dashboard"
             >
               Dashboard
@@ -68,7 +68,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 my-3">
+    <div className="navbar bg-base-200">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,8 +88,7 @@ const NavBar = () => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-4 py-2 shadow bg-base-100 rounded-box w-52 text-slate-600 font-bold uppercase"
+            className="menu menu-compact dropdown-content mt-4 py-4 px-5 shadow bg-base-200 rounded-box text-slate-600 font-bold uppercase z-50"
           >
             {navItems}
           </ul>
@@ -143,14 +142,14 @@ const NavBar = () => {
             />
             <button
               onClick={handleLogout}
-              className="font-bold  text-slate-600 hover:bg-slate-200 px-3 py-2 rounded-lg"
+              className="font-bold  text-slate-600 hover:bg-slate-200 hover:text-cyan-500 px-3 py-2 rounded-lg"
             >
               Logout
             </button>
           </span>
         ) : (
           <Link className="me-5" to="/login">
-            <button className="font-bold text-lg text-slate-600 hover:bg-slate-200 px-3 py-2 rounded-lg">
+            <button className="font-bold text-lg text-slate-600 hover:bg-slate-200 hover:text-cyan-500 px-3 py-2 rounded-lg">
               Login
             </button>
           </Link>

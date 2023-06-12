@@ -1,4 +1,6 @@
-import { FaBook, FaCalendarAlt, FaHome, FaWallet } from "react-icons/fa";
+import { FaBook, FaFile, FaFileVideo, FaHome, FaUsers, FaWallet } from "react-icons/fa";
+import { GiTeacher } from 'react-icons/gi';
+import { AiOutlineFolderAdd,AiOutlineFileDone } from 'react-icons/ai';
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
@@ -7,7 +9,7 @@ import useInstructor from "../hooks/useInstructor";
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
-  
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -24,47 +26,47 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-60 h-full bg-cyan-500 text-white">
-          <h2 className="text-3xl mb-10 text-gray-700 font-semibold">Language Hub</h2>
+          <h2 className="text-2xl mb-10 text-gray-700 font-bold">Language Hub</h2>
           {/* Sidebar content here */}
           {isAdmin ? (
             <>
               <li>
                 <NavLink to="/dashboard/manageClasses">
-                  <FaWallet></FaWallet> Manage Classes
+                  <FaFileVideo className="text-black"/> Manage Classes
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageUsers">
-                  <FaBook></FaBook> Manage Users
+                  <FaUsers className="text-black"/> Manage Users
                 </NavLink>
               </li>
             </>
           ) : isInstructor ? <>
               <li>
                 <NavLink to="/dashboard/addClass">
-                  <FaWallet></FaWallet> Add a Class
+                  <AiOutlineFolderAdd className="text-black text-xl"/>Add a Class
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/myClasses">
-                  <FaBook></FaBook> My Classes
+                  <FaBook className="text-black"/>My Classes
                 </NavLink>
               </li>
             </> : (
             <>
               <li>
                 <NavLink to="/dashboard/selectClasses">
-                  <FaCalendarAlt></FaCalendarAlt> My Selected Classes
+                  <AiOutlineFileDone className="text-black text-xl"/> My Selected Classes
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/enrollClasses">
-                  <FaCalendarAlt></FaCalendarAlt> My Enrolled Classes
+                  <FaFile className="text-black"/> My Enrolled Classes
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/">
-                  <FaWallet></FaWallet> Payment History
+                  <FaWallet className="text-black"></FaWallet> Payment History
                 </NavLink>
               </li>
             </>
@@ -72,14 +74,16 @@ const Dashboard = () => {
           <div className="divider"></div>
           <li>
             <NavLink to="/">
-              <FaHome></FaHome> Home
+              <FaHome className="text-black"/> Home
             </NavLink>{' '}
           </li>
           <li>
-            <NavLink to="/classes"> Our Classes</NavLink>
+            <NavLink to="/classes">
+             <FaFileVideo className="text-black"/> Our Classes</NavLink>
           </li>
           <li>
-            <NavLink to="/instructors">Our Instructors</NavLink>
+            <NavLink to="/instructors">
+              <GiTeacher className="text-black"/>Our Instructors</NavLink>
           </li>
         </ul>
       </div>

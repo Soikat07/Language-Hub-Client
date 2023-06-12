@@ -47,7 +47,7 @@ const SelectedClass = () => {
       <div className="overflow-x-auto w-full">
         <table className="table">
           {/* head */}
-          <thead className="bg-cyan-700 text-base text-white">
+          <thead className="bg-cyan-500 text-base text-white">
             <tr>
               <th>#</th>
               <th>Image</th>

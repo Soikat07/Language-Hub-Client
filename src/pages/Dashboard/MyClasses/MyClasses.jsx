@@ -15,7 +15,7 @@ const MyClasses = () => {
 
   return (
     <div className="overflow-x-auto w-full ml-4">
-      <table className="table w-full bg-cyan-600">
+      <table className="table w-full bg-cyan-500">
         {/* head */}
         <thead>
           <tr className="text-white text-base">

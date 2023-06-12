@@ -4,11 +4,16 @@
 
 
 .active{
-  @apply transition-colors duration-200 font-medium tracking-wide text-white bg-orange-500
+  @apply transition-colors duration-200 font-medium tracking-wide text-white bg-cyan-600 
+  hover:text-cyan-500
+}
+.default{
+  @apply transition-colors duration-200 font-medium tracking-wide 
+  hover:text-cyan-500
 }
 
 .drawer-side a.active {
-    color: gold;
+    background-color: rgba(0, 0, 0, 0.212);
   }
   .drawer-side a {
     background-color: transparent;
