@@ -6,6 +6,8 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye,FaEyeSlash } from 'react-icons/fa';
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import Lottie from 'lottie-react';
+import loginLottie from '../../assets/107385-login.json';
 
 
 const Login = () => {
@@ -50,15 +52,10 @@ const Login = () => {
   }
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-base-200 my-10">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign up now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <Lottie animationData={loginLottie} loop={true} />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -88,7 +85,13 @@ const Login = () => {
                 className="input input-bordered"
               />
               <div className="absolute right-4 bottom-4">
-                <span onClick={handlePasswordShow}>{show ?<FaEyeSlash title="Hide password"/>:<FaEye title="Show password"/>}</span>
+                <span onClick={handlePasswordShow}>
+                  {show ? (
+                    <FaEyeSlash title="Hide password" />
+                  ) : (
+                    <FaEye title="Show password" />
+                  )}
+                </span>
               </div>
             </div>
             <div className="form-control mt-6">
@@ -96,10 +99,10 @@ const Login = () => {
             </div>
             <p>
               <small>
-                New in here? <Link to="/registration">Sign Up</Link>
+                New in here? <Link to="/registration" className="text-cyan-600">Sign Up</Link>
               </small>
             </p>
-            <SocialLogin/>
+            <SocialLogin />
           </form>
         </div>
       </div>
