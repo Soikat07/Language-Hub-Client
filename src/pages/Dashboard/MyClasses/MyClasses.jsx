@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { AuthContext } from "../../../providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/Authprovider";
 
 
 const MyClasses = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const { data: myClasses = []} = useQuery(['classes',user?.email], async () => {
     const res = await axiosSecure.get(`/myClasses?email=${user?.email}`);
@@ -14,7 +14,7 @@ const MyClasses = () => {
   });
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto w-full ml-4">
       <table className="table w-full bg-cyan-600">
         {/* head */}
         <thead>
@@ -34,17 +34,15 @@ const MyClasses = () => {
                 <th>{index + 1}</th>
                 <td>{item.course_name}</td>
                 <td>{item.enrolled_students}</td>
-                <td>{item.status}</td>
+                <td className={item.status==="Denied"?"text-red-600":item.status==="Approved"?"text-green-600":"text-blue-600"}>{item.status}</td>
                 <td>
                   <Link to={`/dashboard/updateClass/${item._id}`}>
-                    <button
-                      className="btn btn-xs bg-yellow-400"
-                    >
-                      Update
-                    </button>
+                    <button className="btn btn-xs bg-yellow-400">Update</button>
                   </Link>
                 </td>
-                <td></td>
+                <td>
+                  <p>{item.feedback?item.feedback.feedback:''}</p>
+                </td>
               </tr>
             </>
           ))}

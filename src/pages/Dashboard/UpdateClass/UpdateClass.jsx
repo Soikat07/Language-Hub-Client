@@ -69,7 +69,7 @@ const UpdateClass = () => {
         className="p-10 lg:p-20 border my-5 bg-zinc-100"
       >
         <h2 className="text-xl lg:text-2xl my-5">
-          Add Class by adding some data
+          You can update Class by modify the data
         </h2>
         <div className="grid lg:grid-rows-3 lg:grid-flow-col gap-4">
           <div className="form-control">
@@ -151,7 +151,7 @@ const UpdateClass = () => {
 
         <div className="form-control my-6">
           <input
-            className="btn btn-block bg-cyan-600 border-none text-white"
+            className="btn btn-block bg-cyan-500 hover:bg-cyan-700 border-none text-white"
             type="submit"
             value="Update Class"
           />

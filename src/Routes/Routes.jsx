@@ -15,6 +15,8 @@ import ManageUsers from "../pages/Dashboard/ManageUser/ManageUsers";
 import AddClass from "../pages/Dashboard/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import UpdateClass from "../pages/Dashboard/UpdateClass/UpdateClass";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import FeedBack from "../pages/Dashboard/ManageClasses/FeedBack";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +77,14 @@ const router = createBrowserRouter([
       {
         path: 'myClasses',
         element: <MyClasses />,
+      },
+      {
+        path: 'manageClasses',
+        element:<ManageClasses/>
+      },
+      {
+        path: 'feedback/:id',
+        element:<FeedBack/>
       },
       {
         path: 'updateClass/:id',
