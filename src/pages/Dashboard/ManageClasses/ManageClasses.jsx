@@ -1,8 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
-
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ManageClasses = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -12,45 +11,49 @@ const ManageClasses = () => {
   });
 
   const handleApprove = item => {
-    
-      fetch(`http://localhost:5000/manageClasses/approve/${item._id}`, {
+    fetch(
+      `https://summer-camp-server-ruby.vercel.app/manageClasses/approve/${item._id}`,
+      {
         method: 'PUT',
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.modifiedCount) {
-            refetch();
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: `Class approved`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
-  }
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `Class approved`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   const handleDeny = item => {
-    
-      fetch(`http://localhost:5000/manageClasses/deny/${item._id}`, {
+    fetch(
+      `https://summer-camp-server-ruby.vercel.app/manageClasses/deny/${item._id}`,
+      {
         method: 'PUT',
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.modifiedCount) {
-            refetch();
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: `Class Denied`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
-  }
+      }
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `Class Denied`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
 
   return (
     <div className="w-full ms-5">
@@ -128,7 +131,10 @@ const ManageClasses = () => {
                         Deny
                       </button>
                       <Link to={`/dashboard/feedback/${item._id}`}>
-                        <button disabled={item.feedback?true:false} className="btn btn-outline btn-xs text-">
+                        <button
+                          disabled={item.feedback ? true : false}
+                          className="btn btn-outline btn-xs text-"
+                        >
                           Feedback
                         </button>
                       </Link>

@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-
+import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -11,9 +10,12 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = user => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: 'PATCH',
-    })
+    fetch(
+      `https://summer-camp-server-ruby.vercel.app/users/admin/${user._id}`,
+      {
+        method: 'PATCH',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -30,9 +32,12 @@ const ManageUsers = () => {
       });
   };
   const handleMakeInstructor = user => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-      method: 'PATCH',
-    })
+    fetch(
+      `https://summer-camp-server-ruby.vercel.app/users/instructor/${user._id}`,
+      {
+        method: 'PATCH',
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);
@@ -48,7 +53,6 @@ const ManageUsers = () => {
         }
       });
   };
-
 
   return (
     <div className="w-full ms-5">
@@ -76,14 +80,14 @@ const ManageUsers = () => {
                   <td>{user.email}</td>
                   <td>
                     <button
-                      disabled={user.role==='Admin'?true:false}
+                      disabled={user.role === 'Admin' ? true : false}
                       onClick={() => handleMakeAdmin(user)}
                       className="btn btn-xs btn-outline text-red-600"
                     >
                       Make Admin
                     </button>
                     <button
-                      disabled={user.role==='Instructor'?true:false}
+                      disabled={user.role === 'Instructor' ? true : false}
                       onClick={() => handleMakeInstructor(user)}
                       className="btn btn-xs btn-outline text-yellow-600"
                     >

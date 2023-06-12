@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
-
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const FeedBack = () => {
   const id = useParams();
@@ -10,12 +9,12 @@ const FeedBack = () => {
     const form = e.target;
     const feedback = form.feedback.value;
     const FeedBackNode = {
-      feedback
-    }
-    fetch(`http://localhost:5000/manageClasses/${id.id}`, {
+      feedback,
+    };
+    fetch(`https://summer-camp-server-ruby.vercel.app/manageClasses/${id.id}`, {
       method: 'PUT',
       headers: {
-        'content-type':'application/json',
+        'content-type': 'application/json',
       },
       body: JSON.stringify(FeedBackNode),
     })
@@ -31,7 +30,7 @@ const FeedBack = () => {
           });
         }
       });
-  }
+  };
   return (
     <div>
       <h1 className="text-xl font-bold">Send a Feedback to the Instructor</h1>

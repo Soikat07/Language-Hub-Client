@@ -1,4 +1,3 @@
-
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,7 +26,7 @@ const Registration = () => {
           updateUserProfile(data.name, data.photoURL)
             .then(() => {
               const savedUser = { name: data.name, email: data.email };
-              fetch('http://localhost:5000/users', {
+              fetch('https://summer-camp-server-ruby.vercel.app/users', {
                 method: 'POST',
                 headers: {
                   'content-type': 'application/json',
@@ -54,15 +53,13 @@ const Registration = () => {
             .catch(error => console.error(error));
         })
         .catch(error => console.log(error));
-    }
-    else {
+    } else {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'The password did not match!',
       });
     }
-
   };
 
   return (

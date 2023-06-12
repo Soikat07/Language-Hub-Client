@@ -1,11 +1,10 @@
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
-
+import axios from 'axios';
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../providers/Authprovider';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000/',
+  baseURL: 'https://summer-camp-server-ruby.vercel.app/',
 });
 
 const useAxiosSecure = () => {

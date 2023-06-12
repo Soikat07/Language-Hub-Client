@@ -1,8 +1,7 @@
-import { FaTrashAlt } from "react-icons/fa";
-import useSelected from "../../../hooks/useSelected";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
-
+import { FaTrashAlt } from 'react-icons/fa';
+import useSelected from '../../../hooks/useSelected';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
   const [selectClasses, refetch] = useSelected();
@@ -21,7 +20,7 @@ const SelectedClass = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selectClass/${id}`, {
+        fetch(`https://summer-camp-server-ruby.vercel.app/selectClass/${id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
@@ -33,14 +32,14 @@ const SelectedClass = () => {
           });
       }
     });
-  }
+  };
 
   return (
     <div className="w-full ms-10">
       <div className="flex justify-evenly mb-5 text-2xl font-bold">
         <h3>Selected Class :{selectClasses.length}</h3>
         <h3>Total Price: ${totalPrice}</h3>
-        <Link to='/dashboard/payment'>
+        <Link to="/dashboard/payment">
           <button className="btn btn-warning px-8">Pay</button>
         </Link>
       </div>

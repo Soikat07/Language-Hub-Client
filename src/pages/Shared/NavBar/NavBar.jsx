@@ -110,7 +110,9 @@ const NavBar = () => {
         <div>
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onChange={handleToggle} type="checkbox" />
+            <input onChange={handleToggle} type="checkbox"
+            checked={theme === "light" ? false : true}
+            />
 
             {/* sun icon */}
             <svg

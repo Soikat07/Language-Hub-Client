@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../../../providers/Authprovider";
-
+import { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../../providers/Authprovider';
 
 const SocialLogin = () => {
-
   const { googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +18,7 @@ const SocialLogin = () => {
           name: loggedUser.displayName,
           email: loggedUser.email,
         };
-        fetch('http://localhost:5000/users', {
+        fetch('https://summer-camp-server-ruby.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',
@@ -32,8 +30,8 @@ const SocialLogin = () => {
             navigate(from, { replace: true });
           });
       })
-    .catch(error=>console.error(error))
-  }
+      .catch(error => console.error(error));
+  };
 
   return (
     <div className="text-center">

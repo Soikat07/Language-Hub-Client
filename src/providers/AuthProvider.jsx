@@ -52,15 +52,17 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       // get and set jwt token
       if (user) {
-        axios.post('http://localhost:5000/jwt', { email: user.email })
+        axios
+          .post('https://summer-camp-server-ruby.vercel.app/jwt', {
+            email: user.email,
+          })
           .then(data => {
             // console.log(data.data.token);
             localStorage.setItem('access-token', data.data.token);
             setLoading(false);
-        })
-      }
-      else {
-        localStorage.removeItem('access-token')
+          });
+      } else {
+        localStorage.removeItem('access-token');
       }
     });
     return () => {

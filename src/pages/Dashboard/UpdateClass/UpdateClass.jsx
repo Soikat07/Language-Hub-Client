@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
-import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
-
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { useLoaderData } from 'react-router-dom';
 
 const UpdateClass = () => {
   const { user } = useContext(AuthContext);
   const loadedData = useLoaderData();
   // console.log(loadedData);
-  const { _id,course_name,price,available_seats,} = loadedData;
+  const { _id, course_name, price, available_seats } = loadedData;
 
   const handleUpdateToy = event => {
     event.preventDefault();
@@ -40,7 +39,7 @@ const UpdateClass = () => {
             price: price,
             available_seats: quantity,
           };
-          fetch(`http://localhost:5000/myClasses/${_id}`, {
+          fetch(`https://summer-camp-server-ruby.vercel.app/myClasses/${_id}`, {
             method: 'PUT',
             headers: {
               'content-type': 'application/json',

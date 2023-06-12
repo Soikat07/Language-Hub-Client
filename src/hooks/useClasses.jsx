@@ -1,14 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-
+import { useQuery } from '@tanstack/react-query';
 
 const useClasses = () => {
   const { data: data = [], refetch } = useQuery({
-    queryKey: ["classes"],
-    queryFn: async() => {
-      const res = await fetch('http://localhost:5000/classes');
-      return res.json()
-    }
-  })
+    queryKey: ['classes'],
+    queryFn: async () => {
+      const res = await fetch(
+        'https://summer-camp-server-ruby.vercel.app/classes'
+      );
+      return res.json();
+    },
+  });
   return [data, refetch];
 };
 
